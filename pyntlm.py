@@ -333,7 +333,7 @@ def handle_type3(req, ntlm_message):
             domain,user,req.unparsed_uri))
         return handle_unauthorized(req)
 
-    req.log_error('PYNTLM: User %s/%s has been authenticated to access URI %s' % (user,domain,req.unparsed_uri), apache.APLOG_NOTICE)
+    req.log_error('PYNTLM: User %s/%s has been authenticated to access URI %s' % (user,domain,req.unparsed_uri), apache.APLOG_INFO)
     set_remote_user(req, user, domain)
     result = check_authorization(req, user, proxy)
     cache.remove(req.connection.id)
